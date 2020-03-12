@@ -10,7 +10,7 @@ public class EstadoConsultar extends MaquinaEstado {
         System.out.println("Informe o ID");
         String id = leitor.nextLine();
 
-        if(id.isBlank()) {
+        if(id.trim().equals("")) {
             System.out.println("Isso não é um ID");
         } else {
             // Faz a consulta
