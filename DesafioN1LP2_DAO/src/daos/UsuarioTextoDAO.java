@@ -1,42 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package daos;
+
 import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 import java.sql.SQLException;
 import basis.Entidade;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import vos.Usuario;
-/**
- *
- * @author cliente
- */
+import vos.AcessoVO;
+
 public class UsuarioTextoDAO extends DAO{
-    
-     private final ConcurrentHashMap<String, Usuario> usuarios = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, AcessoVO> usuarios = new ConcurrentHashMap<>();
     
     public UsuarioTextoDAO()
     { 
-        super(Usuario.class);
-       
-        String path = "C:\\DesafioN1LP2\\DesafioN1-LP2\\DesafioN1LP2_DAO\\src\\txts\\funcionario.txt";
-        try{
-        BufferedReader buffRead = new BufferedReader (new FileReader(path));
-        String linha = "";
-        while (true) {
-            if (linha != null) {
+        super(AcessoVO.class);
+        
+        // Caminho inicia no main
+        String path = "..\\DesafioN1LP2_DAO\\src\\txts\\acessos.txt";
+        try {
+            BufferedReader buffRead = new BufferedReader (new FileReader(path));
+            String linha;
+
+            while((linha = buffRead.readLine()) != null) {
                 System.out.println(linha);
- 
-            } else
-                break;
-            linha = buffRead.readLine();
-        }
-        buffRead.close();
-        }catch(Exception e){
+            }
+
+            buffRead.close();
+        } catch(Exception e) {
+            e.printStackTrace();
         }
        
     }
@@ -56,12 +47,13 @@ public class UsuarioTextoDAO extends DAO{
     */
     @Override
     public ArrayList<Entidade> lista() throws SQLException {
-        ArrayList<Entidade> entidades;
-        entidades = new ArrayList();
-        for (Usuario usuario : usuarios.values())
+        ArrayList<Entidade> entidades = new ArrayList();
+        
+        for (AcessoVO usuario : usuarios.values())
         {
             entidades.add(usuario);
         }
+        
         return entidades;
     }
 }

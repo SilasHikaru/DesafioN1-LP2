@@ -3,44 +3,32 @@ package estadosConsole;
 import desafion1lp2.DesafioN1LP2;
 import java.util.Scanner;
 import business.Acesso;
-import vos.Usuario;
+import vos.AcessoVO;
 
 public class EstadoLogin extends MaquinaEstado {
     @Override
     public boolean executar() {
-        Usuario user = new Usuario();
+        AcessoVO user = new AcessoVO();
         Scanner leitor = new Scanner(System.in);
         
         System.out.print("Usuário: ");
-        user.setLogin(leitor.nextLine());
+        user.setUsuario(leitor.nextLine());
 
         System.out.print("Senha: ");
         user.setSenha(leitor.nextLine());
-
-        System.out.print("Tipo de funcionario: ");
-        user.setTipo(leitor.nextLine());
         
         Acesso acesso = new Acesso();
-        boolean senhaValida = acesso.validaUsuario(user);
         
-        if(senhaValida){
-            switch(user.getTipo()) {
-            case "G":
-                user.setTipo("Gerente");
-                DesafioN1LP2.tipoFuncionario = "GERENTE";
+        if(acesso.validaUsuario(user)){
+            if(DesafioN1LP2.tipoFuncionario.equalsIgnoreCase("GERENTE") || DesafioN1LP2.tipoFuncionario.equalsIgnoreCase("VENDEDOR")) {
                 DesafioN1LP2.estadoConsole = EnumEstado.MENU_FUNCIONARIO.getEstadoMaquina();
-                break;
-
-            case "V":
-                user.setTipo("Vendedor");
-                DesafioN1LP2.tipoFuncionario = "VENDEDOR";
-                DesafioN1LP2.estadoConsole = EnumEstado.MENU_FUNCIONARIO.getEstadoMaquina();
-                break;
-
-            default:
-                System.out.println("Tipo inválido");
-                break;
+            } else if(DesafioN1LP2.tipoFuncionario.equalsIgnoreCase("COMUM")) {
+                System.out.println("Este usuário não possui funções neste sistema");
+            } else {
+                System.out.println("Tipo de funcionário não existe");
             }
+        } else {
+            System.out.println("Usuário ou senha inválido");
         }
        
         return false;

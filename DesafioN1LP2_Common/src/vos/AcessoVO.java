@@ -1,6 +1,8 @@
 package vos;
 
-public class AcessoVO {
+import basis.Entidade;
+
+public class AcessoVO extends Entidade {
     private String usuario;
     private String senha;
     private int funcionarioId;
