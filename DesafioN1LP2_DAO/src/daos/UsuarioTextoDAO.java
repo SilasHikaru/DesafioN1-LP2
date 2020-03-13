@@ -32,11 +32,21 @@ public class UsuarioTextoDAO extends DAO{
             String linha;
             String splited[];
             while((linha = buffRead.readLine()) != null) {
-                splited = linha.split("|");
+                splited = linha.split("\\|");
                 if(splited[0].equals(codigo)){
+                    AcessoVO acesso = new AcessoVO();
+                    FuncionarioVO funcionario = new FuncionarioVO();
+                    acesso.setUsuario(codigo);
+                    acesso.setSenha(splited[1]);
+                    funcionario.setTipoFuncionario(splited[2]);
+                    funcionario.setAcesso(acesso);
+                    
+                    entidade = funcionario;
+                    /*
                     ((AcessoVO)entidade).setUsuario(codigo);
                     ((AcessoVO)entidade).setSenha(splited[1]);
                     ((FuncionarioVO)entidade).setTipoFuncionario(splited[2]);
+                    */
                 }
             }
 

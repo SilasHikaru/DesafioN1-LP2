@@ -4,7 +4,8 @@ import desafion1lp2.DesafioN1LP2;
 import java.util.Scanner;
 import business.Acesso;
 import vos.AcessoVO;
-
+import vos.FuncionarioVO;
+import basis.Entidade;
 public class EstadoLogin extends MaquinaEstado {
     @Override
     public boolean executar() {
@@ -20,7 +21,7 @@ public class EstadoLogin extends MaquinaEstado {
         Acesso acesso = new Acesso();
         
         if(acesso.validaUsuario(user)){
-            if(DesafioN1LP2.tipoFuncionario.equalsIgnoreCase("GERENTE") || DesafioN1LP2.tipoFuncionario.equalsIgnoreCase("VENDEDOR")) {
+            if( DesafioN1LP2.tipoFuncionario.equalsIgnoreCase("VENDEDOR")|| DesafioN1LP2.tipoFuncionario.equalsIgnoreCase("VENDEDOR")) {
                 DesafioN1LP2.estadoConsole = EnumEstado.MENU_FUNCIONARIO.getEstadoMaquina();
             } else if(DesafioN1LP2.tipoFuncionario.equalsIgnoreCase("COMUM")) {
                 System.out.println("Este usuário não possui funções neste sistema");

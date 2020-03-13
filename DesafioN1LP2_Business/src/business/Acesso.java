@@ -3,7 +3,9 @@ package business;
 import basis.FabricaRepositorio;
 import enums.EntidadesDisponiveis;
 import vos.AcessoVO;
+import vos.FuncionarioVO;
 import daos.Repositorio;
+import desafion1lp2.DesafioN1LP2;
 
 public class Acesso {
      private boolean validaSenha(String senhaRepositorio, String senhaDigitada){
@@ -14,13 +16,19 @@ public class Acesso {
         
         boolean retorno = false;
         Repositorio repositorio = FabricaRepositorio.Fabrica();        
-        AcessoVO acessoVO = (AcessoVO)repositorio.localiza(user.getUsuario(), EntidadesDisponiveis.USUARIO);
+        FuncionarioVO funcionario = (FuncionarioVO)repositorio.localiza(user.getUsuario(), EntidadesDisponiveis.USUARIO);
         
-        if (acessoVO != null)
+        if (funcionario != null)
         {
-            retorno = validaSenha(acessoVO.getSenha(), user.getSenha());
+            retorno = validaSenha(funcionario.getAcesso().getSenha(), user.getSenha());
+            
         }
         
         return retorno;
+    }
+    public boolean tipo(){
+    boolean tipo = false;
+        String t = FuncionarioVO.getTipoFuncionario();
+    return tipo;
     }
 }

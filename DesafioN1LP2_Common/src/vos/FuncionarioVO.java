@@ -37,7 +37,7 @@ public class FuncionarioVO extends Entidade{
     }
 
     /**
-     * @param TipoFuncionarioId the TipoFuncionarioId to set
+     * @param TipoFuncionario the TipoFuncionarioId to set
      */
     public void setTipoFuncionario(String tipoFuncionario) {
         this.tipoFuncionario = tipoFuncionario;
