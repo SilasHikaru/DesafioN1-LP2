@@ -10,7 +10,7 @@ import vos.AcessoVO;
 import vos.FuncionarioVO;
 
 public class UsuarioTextoDAO extends DAO{
-    private final ConcurrentHashMap<String, AcessoVO> usuarios = new ConcurrentHashMap<>();
+   
     
     public UsuarioTextoDAO()
     { 
@@ -62,12 +62,17 @@ public class UsuarioTextoDAO extends DAO{
     @Override
     public ArrayList<Entidade> lista() throws SQLException {
         ArrayList<Entidade> entidades = new ArrayList();
-        
+        /*
         for (AcessoVO usuario : usuarios.values())
         {
             entidades.add(usuario);
         }
-        
+        */
         return entidades;
+    }
+    
+    @Override 
+    public boolean cadastra(int id){
+        return false;
     }
 }

@@ -5,7 +5,11 @@ public enum EntidadesDisponiveis {
 
     PEDIDO("pedido"),
 
-    PRODUTO("produto");
+    PRODUTO("produto"),
+    
+    CLIENTE("clinete"),
+    
+    FUNCIONARIO("funcionario");
  
     final private String descricao;
  

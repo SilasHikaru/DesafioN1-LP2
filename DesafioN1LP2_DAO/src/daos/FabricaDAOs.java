@@ -17,7 +17,9 @@ public class FabricaDAOs {
         {
             case USUARIO:
                 retorno = new UsuarioTextoDAO();
-                break;            
+                break;
+            case CLIENTE:
+                retorno = new ClienteTextoDAO();
             default:
                 retorno = null;
                 break;

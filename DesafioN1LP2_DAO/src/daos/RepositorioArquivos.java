@@ -37,4 +37,11 @@ public class RepositorioArquivos extends Repositorio{
         }
         return entidade;
     }
+    
+    public boolean Cadastro(int id, EntidadesDisponiveis tipoEntidade){
+         boolean cadastro = false;
+         DAO dao = FabricaDAOs.Fabrica(tipoEntidade, TipoRepositorio.TEXTO);
+         cadastro = dao.cadastra(id);
+         return cadastro;
+    }
 }

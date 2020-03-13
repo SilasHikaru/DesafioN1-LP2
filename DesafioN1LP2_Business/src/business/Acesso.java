@@ -5,7 +5,7 @@ import enums.EntidadesDisponiveis;
 import vos.AcessoVO;
 import vos.FuncionarioVO;
 import daos.Repositorio;
-import desafion1lp2.DesafioN1LP2;
+
 
 public class Acesso {
      private boolean validaSenha(String senhaRepositorio, String senhaDigitada){
@@ -26,9 +26,5 @@ public class Acesso {
         
         return retorno;
     }
-    public boolean tipo(){
-    boolean tipo = false;
-        String t = FuncionarioVO.getTipoFuncionario();
-    return tipo;
-    }
+   
 }
