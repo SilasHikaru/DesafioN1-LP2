@@ -1,24 +1,20 @@
 package vos;
+import basis.Entidade;
 
-public class FuncionarioVO {
-    private int funcionarioId;
+public class FuncionarioVO extends Entidade{
+    
     private String nome;
-    private int TipoFuncionarioId;
-
-    /**
-     * @return the funcionarioId
-     */
-    public int getFuncionarioId() {
-        return funcionarioId;
+    private String tipoFuncionario;
+    private AcessoVO acesso;
+  
+    
+    public AcessoVO getAcesso(){
+        return acesso;
     }
-
-    /**
-     * @param funcionarioId the funcionarioId to set
-     */
-    public void setFuncionarioId(int funcionarioId) {
-        this.funcionarioId = funcionarioId;
+    
+    public void setAcesso(AcessoVO acesso){
+        this.acesso = acesso;
     }
-
     /**
      * @return the nome
      */
@@ -36,14 +32,14 @@ public class FuncionarioVO {
     /**
      * @return the TipoFuncionarioId
      */
-    public int getTipoFuncionarioId() {
-        return TipoFuncionarioId;
+    public String getTipoFuncionario() {
+        return tipoFuncionario;
     }
 
     /**
      * @param TipoFuncionarioId the TipoFuncionarioId to set
      */
-    public void setTipoFuncionarioId(int TipoFuncionarioId) {
-        this.TipoFuncionarioId = TipoFuncionarioId;
+    public void setTipoFuncionario(String tipoFuncionario) {
+        this.tipoFuncionario = tipoFuncionario;
     }
 }

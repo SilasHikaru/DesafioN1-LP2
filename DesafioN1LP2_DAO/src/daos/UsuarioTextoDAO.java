@@ -7,29 +7,14 @@ import basis.Entidade;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import vos.AcessoVO;
+import vos.FuncionarioVO;
 
 public class UsuarioTextoDAO extends DAO{
     private final ConcurrentHashMap<String, AcessoVO> usuarios = new ConcurrentHashMap<>();
     
     public UsuarioTextoDAO()
     { 
-        super(AcessoVO.class);
-        
-        // Caminho inicia no main
-        String path = "..\\DesafioN1LP2_DAO\\src\\txts\\acessos.txt";
-        try {
-            BufferedReader buffRead = new BufferedReader (new FileReader(path));
-            String linha;
-
-            while((linha = buffRead.readLine()) != null) {
-                System.out.println(linha);
-            }
-
-            buffRead.close();
-        } catch(Exception e) {
-            e.printStackTrace();
-        }
-       
+        super(AcessoVO.class);  
     }
     @Override
     public Entidade seleciona(int id) {
@@ -39,7 +24,26 @@ public class UsuarioTextoDAO extends DAO{
 
     @Override
     public Entidade localiza(String codigo) throws SQLException  {
-        Entidade entidade = usuarios.getOrDefault(codigo, null);
+        Entidade entidade = null;
+       // Caminho inicia no main
+        String path = "..\\DesafioN1LP2_DAO\\src\\txts\\acessos.txt";
+        try {
+            BufferedReader buffRead = new BufferedReader (new FileReader(path));
+            String linha;
+            String splited[];
+            while((linha = buffRead.readLine()) != null) {
+                splited = linha.split("|");
+                if(splited[0].equals(codigo)){
+                    ((AcessoVO)entidade).setUsuario(codigo);
+                    ((AcessoVO)entidade).setSenha(splited[1]);
+                    ((FuncionarioVO)entidade).setTipoFuncionario(splited[2]);
+                }
+            }
+
+            buffRead.close();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
         return entidade;
     }
     
