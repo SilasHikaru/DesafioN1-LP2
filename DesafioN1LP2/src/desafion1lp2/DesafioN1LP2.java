@@ -5,7 +5,7 @@ import estadosConsole.EnumEstado;
 
 public class DesafioN1LP2 {
     public static MaquinaEstado estadoConsole;
-    public static String tipoFuncionario;
+    
     /**
      * @param args the command line arguments
      */

@@ -5,7 +5,7 @@ import enums.EntidadesDisponiveis;
 import vos.AcessoVO;
 import vos.FuncionarioVO;
 import daos.Repositorio;
-
+import business.config.Config;
 
 public class Acesso {
      private boolean validaSenha(String senhaRepositorio, String senhaDigitada){
@@ -21,6 +21,9 @@ public class Acesso {
         if (funcionario != null)
         {
             retorno = validaSenha(funcionario.getAcesso().getSenha(), user.getSenha());
+            if(retorno){
+                Config.getInstance().setFuncionario(funcionario);
+            }
             
         }
         

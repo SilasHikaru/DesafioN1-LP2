@@ -22,7 +22,7 @@ public abstract class DAO <E extends Entidade>{
     public abstract E localiza(String codigo) throws SQLException;
     public abstract ArrayList<E> lista() throws SQLException;
     public abstract boolean cadastra(int id);
-    
+    public abstract void deletar(String id) throws SQLException;
     protected E getInstanceOfE()
     {
         try

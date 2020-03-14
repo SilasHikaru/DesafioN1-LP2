@@ -1,13 +1,14 @@
 package daos;
 
 import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
 import java.sql.SQLException;
 import basis.Entidade;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import vos.AcessoVO;
 import vos.FuncionarioVO;
+import java.io.PrintWriter;
+import java.io.FileWriter;
 
 public class UsuarioTextoDAO extends DAO{
    
@@ -18,7 +19,7 @@ public class UsuarioTextoDAO extends DAO{
     }
     @Override
     public Entidade seleciona(int id) {
-        // Não há retorno por id
+       
         return null;
     }
 
@@ -57,8 +58,7 @@ public class UsuarioTextoDAO extends DAO{
         return entidade;
     }
     
-    /* Opção 1 
-    */
+    
     @Override
     public ArrayList<Entidade> lista() throws SQLException {
         ArrayList<Entidade> entidades = new ArrayList();
@@ -69,6 +69,31 @@ public class UsuarioTextoDAO extends DAO{
         }
         */
         return entidades;
+    }
+
+    @Override
+    public void deletar(String usuario) throws SQLException {
+        // Caminho inicia no main
+        String path = "..\\DesafioN1LP2_DAO\\src\\txts\\acessos.txt";
+        
+        try {
+            try (BufferedReader buffRead = new BufferedReader(new FileReader(path))) {
+                try (PrintWriter pw = new PrintWriter(new FileWriter(path))) {
+                    String linha;
+                    String splited[];
+
+                    while((linha = buffRead.readLine()) != null) {
+                        splited = linha.split("\\|");
+                        
+                        if(!splited[0].equals(usuario)){
+                            pw.println(linha);
+                        }
+                    }
+                }
+            }
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
     
     @Override 
