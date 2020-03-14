@@ -1,5 +1,6 @@
 package estadosConsole;
 
+import business.config.Config;
 import desafion1lp2.DesafioN1LP2;
 import java.util.Scanner;
 
@@ -10,7 +11,7 @@ public class EstadoMenuFuncionario extends MaquinaEstado {
         System.out.println("1 - Cliente");
         System.out.println("2 - Produto");
         System.out.println("3 - Pedido");
-        if(DesafioN1LP2.tipoFuncionario.equalsIgnoreCase("GERENTE")) {
+        if(Config.getInstance().getFuncionario().getTipoFuncionario().equalsIgnoreCase("GERENTE")) {
             System.out.println("4 - Funcionário");
         }
         System.out.println("0 - Desconectar");
@@ -34,7 +35,7 @@ public class EstadoMenuFuncionario extends MaquinaEstado {
                 break;
 
             case "4":
-                if(DesafioN1LP2.tipoFuncionario.equalsIgnoreCase("GERENTE")){
+                if(Config.getInstance().getFuncionario().getTipoFuncionario().equalsIgnoreCase("GERENTE")){
                     EstadoCRUID.tipoItem = "FUNCIONARIO";
                     DesafioN1LP2.estadoConsole = EnumEstado.ESTADO_CRUID.getEstadoMaquina();
                 } else {

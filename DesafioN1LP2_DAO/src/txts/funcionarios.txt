@@ -1,1 +1,1 @@
-FuncionarioId|Nome|TipoCargoId
+Usuario|Senha|TipoFuncionario

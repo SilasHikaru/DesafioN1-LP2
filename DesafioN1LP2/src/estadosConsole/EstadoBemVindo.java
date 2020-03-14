@@ -7,7 +7,7 @@ public class EstadoBemVindo extends MaquinaEstado {
     @Override
     public boolean executar() {
         boolean sair = false;
-        DesafioN1LP2.tipoFuncionario = "";
+        
 
         System.out.println("--- BEM VINDO ---");
         System.out.println("1 - Acessar");

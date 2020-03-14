@@ -27,7 +27,7 @@ public class UsuarioTextoDAO extends DAO{
     public Entidade localiza(String codigo) throws SQLException  {
         Entidade entidade = null;
        // Caminho inicia no main
-        String path = "..\\DesafioN1LP2_DAO\\src\\txts\\acessos.txt";
+        String path = "..\\DesafioN1LP2_DAO\\src\\txts\\funcionarios.txt";
         try {
             BufferedReader buffRead = new BufferedReader (new FileReader(path));
             String linha;
@@ -74,7 +74,7 @@ public class UsuarioTextoDAO extends DAO{
     @Override
     public void deletar(String usuario) throws SQLException {
         // Caminho inicia no main
-        String path = "..\\DesafioN1LP2_DAO\\src\\txts\\acessos.txt";
+        String path = "..\\DesafioN1LP2_DAO\\src\\txts\\funcionarios.txt";
         
         try {
             try (BufferedReader buffRead = new BufferedReader(new FileReader(path))) {

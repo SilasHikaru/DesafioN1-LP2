@@ -1,11 +1,8 @@
 package vos;
 
-import basis.Entidade;
-
-public class AcessoVO extends Entidade {
+public class AcessoVO {
     private String usuario;
     private String senha;
-    
 
     /**
      * @return the usuario
@@ -34,6 +31,4 @@ public class AcessoVO extends Entidade {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
-   
 }
