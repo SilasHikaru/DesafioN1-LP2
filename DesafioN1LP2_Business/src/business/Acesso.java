@@ -14,7 +14,7 @@ public class Acesso {
     public boolean validaUsuario(FuncionarioVO func) {
         boolean retorno = false;
         Repositorio repositorio = FabricaRepositorio.Fabrica();        
-        FuncionarioVO funcionario = (FuncionarioVO)repositorio.localiza(func.getAcesso().getUsuario(), EntidadesDisponiveis.USUARIO);
+        FuncionarioVO funcionario = (FuncionarioVO)repositorio.localizar(func.getAcesso().getUsuario(), EntidadesDisponiveis.USUARIO);
         
         if (funcionario != null)
         {

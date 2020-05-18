@@ -10,26 +10,31 @@ import vos.FuncionarioVO;
 import java.io.PrintWriter;
 import java.io.FileWriter;
 
-public class UsuarioTextoDAO extends DAO{
-   
-    
-    public UsuarioTextoDAO()
-    { 
-        super(AcessoVO.class);  
-    }
-    @Override
-    public Entidade seleciona(int id) {
-       
-        return null;
-    }
+public class UsuarioTextoDAO extends DAO {
+    private final String PATH_FILE = "..\\DesafioN1LP2_DAO\\src\\txts\\funcionarios.txt";
 
+    public UsuarioTextoDAO() { 
+        super(AcessoVO.class);
+    }
+    
     @Override
-    public Entidade localiza(String codigo) throws SQLException  {
+    public ArrayList<Entidade> listar() throws SQLException {
+        ArrayList<Entidade> entidades = new ArrayList();
+        /*
+        for (AcessoVO usuario : usuarios.values())
+        {
+            entidades.add(usuario);
+        }
+        */
+        return entidades;
+    }
+    
+    @Override
+    public Entidade localizar(String codigo) throws SQLException {
         Entidade entidade = null;
-       // Caminho inicia no main
-        String path = "..\\DesafioN1LP2_DAO\\src\\txts\\funcionarios.txt";
+
         try {
-            BufferedReader buffRead = new BufferedReader (new FileReader(path));
+            BufferedReader buffRead = new BufferedReader (new FileReader(PATH_FILE));
             String linha;
             String splited[];
             while((linha = buffRead.readLine()) != null) {
@@ -57,35 +62,32 @@ public class UsuarioTextoDAO extends DAO{
         }
         return entidade;
     }
-    
-    
+
     @Override
-    public ArrayList<Entidade> lista() throws SQLException {
-        ArrayList<Entidade> entidades = new ArrayList();
-        /*
-        for (AcessoVO usuario : usuarios.values())
-        {
-            entidades.add(usuario);
-        }
-        */
-        return entidades;
+    public Entidade selecionar(int id) {
+        return null;
+    }
+    
+    @Override 
+    public void atualizar(Entidade entidade) {
+    }
+    
+    @Override 
+    public void cadastrar(Entidade entidade) {
     }
 
     @Override
-    public void deletar(String usuario) throws SQLException {
-        // Caminho inicia no main
-        String path = "..\\DesafioN1LP2_DAO\\src\\txts\\funcionarios.txt";
-        
+    public void deletar(int id) throws SQLException {
         try {
-            try (BufferedReader buffRead = new BufferedReader(new FileReader(path))) {
-                try (PrintWriter pw = new PrintWriter(new FileWriter(path))) {
+            try (BufferedReader buffRead = new BufferedReader(new FileReader(PATH_FILE))) {
+                try (PrintWriter pw = new PrintWriter(new FileWriter(PATH_FILE))) {
                     String linha;
                     String splited[];
 
                     while((linha = buffRead.readLine()) != null) {
                         splited = linha.split("\\|");
                         
-                        if(!splited[0].equals(usuario)){
+                        if(!splited[0].equals(id)) {
                             pw.println(linha);
                         }
                     }
@@ -94,10 +96,5 @@ public class UsuarioTextoDAO extends DAO{
         } catch(Exception e) {
             e.printStackTrace();
         }
-    }
-    
-    @Override 
-    public boolean cadastra(int id){
-        return false;
     }
 }

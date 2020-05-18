@@ -3,7 +3,7 @@ package daos;
 import vos.AcessoVO;
 import enums.EntidadesDisponiveis;
 import enums.TipoRepositorio;
-import daos.UsuarioTextoDAO;
+// import daos.UsuarioTextoDAO;
 
 public class FabricaDAOs {
     public static DAO Fabrica(EntidadesDisponiveis enumEntidade, TipoRepositorio repositorio) {
@@ -12,7 +12,7 @@ public class FabricaDAOs {
 
     private static DAO montaDAOTexto(EntidadesDisponiveis enumEntidade) {
         DAO retorno;
-        
+
         switch (enumEntidade)
         {
             case USUARIO:
@@ -20,11 +20,12 @@ public class FabricaDAOs {
                 break;
             case CLIENTE:
                 retorno = new ClienteTextoDAO();
+                break;
             default:
                 retorno = null;
                 break;
         }
-        
-        return retorno;    
+
+        return retorno;
     }
 }

@@ -1,1 +1,2 @@
 Usuario|Senha|TipoFuncionario
+admin|123|VENDEDOR

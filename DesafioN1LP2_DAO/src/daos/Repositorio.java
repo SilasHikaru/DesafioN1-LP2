@@ -1,17 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package daos;
+
 import enums.EntidadesDisponiveis;
 import basis.Entidade;
-/**
- *
- * @author cliente
- */
+import java.util.ArrayList;
+
 public abstract class Repositorio {
-    
-    public abstract Entidade seleciona(int id, EntidadesDisponiveis tipoEntidade);
-    public abstract Entidade localiza(String codigo, EntidadesDisponiveis tipoEntidade);
+    public abstract Entidade localizar(String codigo, EntidadesDisponiveis tipoEntidade);
+    public abstract ArrayList<Entidade> listar(EntidadesDisponiveis tipoEntidade);
+    public abstract Entidade selecionar(int id, EntidadesDisponiveis tipoEntidade);
+    public abstract void atualizar(Entidade entidade, EntidadesDisponiveis tipoEntidade);
+    public abstract void cadastrar(Entidade entidade, EntidadesDisponiveis tipoEntidade);
+    public abstract void deletar(int id, EntidadesDisponiveis tipoEntidade);
 }

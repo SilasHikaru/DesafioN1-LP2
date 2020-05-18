@@ -47,7 +47,7 @@ public class EstadoCadastrar extends MaquinaEstado {
         System.out.print("Informe o nome do cliente");
         cliente.setNome(le.nextLine());
         
-        cadastro = repositorio.Cadastro(cliente.getClienteId(), EntidadesDisponiveis.USUARIO);
+        // cadastro = repositorio.cadastrar(cliente.getClienteId(), EntidadesDisponiveis.USUARIO);
     }
     
     private void cadastrarProduto() {
