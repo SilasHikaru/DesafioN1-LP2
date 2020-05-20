@@ -1,6 +1,7 @@
 package vos;
+import basis.Entidade;
 
-public class ProdutoVO {
+public class ProdutoVO extends Entidade{
     private int produtoId;
     private String descricao;
 

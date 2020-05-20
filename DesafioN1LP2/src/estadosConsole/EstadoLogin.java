@@ -24,7 +24,7 @@ public class EstadoLogin extends MaquinaEstado {
         Acesso acesso = new Acesso();
         
         if(acesso.validaUsuario(func)){
-            if(Config.getInstance().getFuncionario().getTipoFuncionario().equalsIgnoreCase("VENDEDOR")|| Config.getInstance().getFuncionario().getTipoFuncionario().equalsIgnoreCase("VENDEDOR")) {
+            if(Config.getInstance().getFuncionario().getTipoFuncionario().equalsIgnoreCase("VENDEDOR")|| Config.getInstance().getFuncionario().getTipoFuncionario().equalsIgnoreCase("GERENTE")) {
                 DesafioN1LP2.estadoConsole = EnumEstado.MENU_FUNCIONARIO.getEstadoMaquina();
             } else if(Config.getInstance().getFuncionario().getTipoFuncionario().equalsIgnoreCase("COMUM")) {
                 System.out.println("Este usuário não possui funções neste sistema");

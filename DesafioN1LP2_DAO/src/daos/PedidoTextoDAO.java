@@ -1,5 +1,10 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package daos;
-
+import vos.PedidoVO;
 import vos.ClienteVO;
 import basis.Entidade;
 import java.io.BufferedReader;
@@ -9,12 +14,15 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-public class ClienteTextoDAO extends DAO {
-    private final String PATH_FILE = "..\\DesafioN1LP2_DAO\\src\\txts\\clientes.txt";
-
-    public ClienteTextoDAO() { 
-        super(ClienteVO.class);
+/**
+ *
+ * @author Acer2
+ */
+public class PedidoTextoDAO extends DAO{
+    private final String PATH_FILE = "..\\DesafioN1LP2_DAO\\src\\txts\\pedidos.txt";
+    private final String PATH_FILE1 = "..\\DesafioN1LP2_DAO\\src\\txts\\clientes.txt";
+    public PedidoTextoDAO() { 
+        super(PedidoVO.class);
     }
     
     @Override
@@ -46,9 +54,12 @@ public class ClienteTextoDAO extends DAO {
 
     @Override
     public void cadastrar(Entidade entidade) {
-        boolean contem = false;
-        ClienteVO cliente = (ClienteVO) entidade;
-        int id = cliente.getClienteId();
+        
+        boolean contemCliente = false;
+        boolean repetido = false;
+        PedidoVO pedido = (PedidoVO) entidade;
+        int id = pedido.getPedidoId();
+        int idCliente = pedido.getClienteId();
         try{
             try(BufferedReader buffRead = new BufferedReader(new FileReader(PATH_FILE))){
                 String linha;
@@ -57,19 +68,34 @@ public class ClienteTextoDAO extends DAO {
                 while((linha = buffRead.readLine()) != null){
                     splited = linha.split("\\|");
                     if(Integer.parseInt(splited[0])== id){
-                        contem = true;
+                        repetido = true;
                     }
 
                 }
-                if(!contem){
+                try(BufferedReader buffReadCliente = new BufferedReader(new FileReader(PATH_FILE1))){
+                    String linha1;
+                    String splited1[];
+                    
+                    while((linha1 = buffReadCliente.readLine()) != null){
+                        splited1 = linha1.split("\\|");
+                        if(Integer.parseInt(splited1[0])== idCliente){
+                            contemCliente = true;
+                        }
+
+                    }
+                    
+                    if(contemCliente && !repetido){
                     try(PrintWriter pw = new PrintWriter(new FileWriter(PATH_FILE,true))){
-                        pw.println(cliente.getClienteId() + "|" + cliente.getNome());
+                        
+                        pw.println(pedido.getPedidoId() + "|" + pedido.getClienteId());
                         pw.close();
                     }
+                    }
+                    else{
+                        System.out.println("Não foi possível cadastrar");
+                    }
                 }
-                else{
-                    System.out.println("Cliente já cadastrado");
-                }
+                
             }
         } catch(Exception e){
             e.printStackTrace();

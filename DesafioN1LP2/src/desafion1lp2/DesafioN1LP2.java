@@ -14,6 +14,7 @@ public class DesafioN1LP2 {
         boolean sair = false;
         
         while (!sair){
+
             sair = estadoConsole.executar();
         }
     }

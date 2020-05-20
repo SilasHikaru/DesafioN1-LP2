@@ -1,1 +1,10 @@
-ClienteId|Nome
+0|Mario
+1|Marisa
+3|Car
+2|Volts
+5|Marte
+4|Nico
+6|Carrera
+7|Nina
+8|Maicon
+9|Ciclano

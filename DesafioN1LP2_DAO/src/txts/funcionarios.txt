@@ -1,2 +1,5 @@
 Usuario|Senha|TipoFuncionario
 admin|123|VENDEDOR
+marques|123|GERENTE
+nathan|123|GERENTE
+silas|123|GERENTE

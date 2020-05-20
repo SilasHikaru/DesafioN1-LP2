@@ -15,7 +15,7 @@ public abstract class DAO <E extends Entidade> {
     public abstract E localizar(String codigo) throws SQLException;
     public abstract E selecionar(int id);
     public abstract void atualizar(E entidade);
-    public abstract void cadastrar(E entidade);
+    public abstract void cadastrar(Entidade entidade);
     public abstract void deletar(int id) throws SQLException;
 
     protected E getInstanceOfE() {
