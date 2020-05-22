@@ -12,8 +12,9 @@ package business.config;
 public class ThreadMensagensAuditoria extends Thread{
     @Override
     public void run(){
-        String mensagem = Config.getInstance().RetiraAuditoria();
+        String mensagem;
         while(!Config.getInstance().Desativa()){
+            mensagem = Config.getInstance().RetiraAuditoria();
             try{
 
                 if(!mensagem.equals("")){
