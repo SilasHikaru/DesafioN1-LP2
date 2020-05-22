@@ -10,6 +10,7 @@ import vos.FuncionarioVO;
 import java.io.PrintWriter;
 import java.io.FileWriter;
 
+
 public class UsuarioTextoDAO extends DAO {
     private final String PATH_FILE = "..\\DesafioN1LP2_DAO\\src\\txts\\funcionarios.txt";
 

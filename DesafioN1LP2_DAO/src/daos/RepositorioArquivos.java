@@ -54,6 +54,7 @@ public class RepositorioArquivos extends Repositorio {
     @Override
     public void cadastrar(Entidade entidade, EntidadesDisponiveis tipoEntidade) {
         DAO dao = FabricaDAOs.Fabrica(tipoEntidade, TipoRepositorio.TEXTO);
+      
         dao.cadastrar(entidade);
     }
     

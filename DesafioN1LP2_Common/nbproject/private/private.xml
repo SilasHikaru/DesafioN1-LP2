@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/DesafioN1LP2/DesafioN1-LP2/DesafioN1LP2_Common/src/vos/PedidoVO.java</file>
+            <file>file:/C:/DesafioN1LP2/DesafioN1-LP2/DesafioN1LP2_Common/src/vos/TipoFuncionario.java</file>
+            <file>file:/C:/DesafioN1LP2/DesafioN1-LP2/DesafioN1LP2_Common/src/basis/Entidade.java</file>
+            <file>file:/C:/DesafioN1LP2/DesafioN1-LP2/DesafioN1LP2_Common/src/enums/EntidadesDisponiveis.java</file>
+            <file>file:/C:/DesafioN1LP2/DesafioN1-LP2/DesafioN1LP2_Common/src/vos/FuncionarioVO.java</file>
             <file>file:/C:/DesafioN1LP2/DesafioN1-LP2/DesafioN1LP2_Common/src/vos/AcessoVO.java</file>
             <file>file:/C:/DesafioN1LP2/DesafioN1-LP2/DesafioN1LP2_Common/src/vos/ClienteVO.java</file>
-            <file>file:/C:/DesafioN1LP2/DesafioN1-LP2/DesafioN1LP2_Common/src/vos/FuncionarioVO.java</file>
+            <file>file:/C:/DesafioN1LP2/DesafioN1-LP2/DesafioN1LP2_Common/src/vos/ProdutoVO.java</file>
         </group>
     </open-files>
 </project-private>
