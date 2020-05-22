@@ -1,22 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package business.config;
+
 import vos.FuncionarioVO;
 import java.util.concurrent.*;
-/**
- *
- * @author Acer2
- */
+
 public class Config {
-    
     private FuncionarioVO funcionario = new FuncionarioVO();
     private static Config config;
     private boolean desativa = true;
-    private Config() {
-    }
+
+    private Config() {}
    
     ConcurrentLinkedQueue<String> lista = new ConcurrentLinkedQueue<String>();
     
@@ -28,13 +20,10 @@ public class Config {
  
         return config;
     }
-    
-    private FuncionarioVO tipoRepositorio; 
 
-    public void setFuncionario (FuncionarioVO funcionario) {
+    public void setFuncionario(FuncionarioVO funcionario) {
          this.funcionario = funcionario;
     }
-
     
     public FuncionarioVO getFuncionario() {
         return this.funcionario;

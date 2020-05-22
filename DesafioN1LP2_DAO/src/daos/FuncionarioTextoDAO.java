@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package daos;
+
 import vos.AcessoVO;
 import vos.FuncionarioVO;
 import basis.Entidade;
@@ -14,12 +10,8 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
-/**
- *
- * @author Acer2
- */
+
 public class FuncionarioTextoDAO extends DAO{
-    
     private final String PATH_FILE = "..\\DesafioN1LP2_DAO\\src\\txts\\funcionarios.txt";
     
     public FuncionarioTextoDAO(){
@@ -58,6 +50,7 @@ public class FuncionarioTextoDAO extends DAO{
         boolean contem = false;
         FuncionarioVO funcionario = (FuncionarioVO) entidade;
         String usuario = funcionario.getAcesso().getUsuario();
+        
         try{
             try(BufferedReader buffRead = new BufferedReader(new FileReader(PATH_FILE))){
                 String linha;
@@ -89,5 +82,4 @@ public class FuncionarioTextoDAO extends DAO{
     public void deletar(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 }

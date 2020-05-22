@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package daos;
+
 import vos.ProdutoVO;
 import basis.Entidade;
 import java.io.BufferedReader;
@@ -14,12 +10,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- *
- * @author Acer2
- */
 public class ProdutoTextoDAO extends DAO {
-    
     private final String PATH_FILE = "..\\DesafioN1LP2_DAO\\src\\txts\\produtos.txt";
     
     public ProdutoTextoDAO(){
@@ -55,9 +46,10 @@ public class ProdutoTextoDAO extends DAO {
 
     @Override
     public void cadastrar(Entidade entidade) {
-          boolean contem = false;
+        boolean contem = false;
         ProdutoVO produto = (ProdutoVO) entidade;
         int id = produto.getProdutoId();
+        
         try{
             try(BufferedReader buffRead = new BufferedReader(new FileReader(PATH_FILE))){
                 String linha;
@@ -65,6 +57,7 @@ public class ProdutoTextoDAO extends DAO {
                 
                 while((linha = buffRead.readLine()) != null){
                     splited = linha.split("\\|");
+                    
                     if(Integer.parseInt(splited[0])== id){
                         contem = true;
                     }
@@ -89,5 +82,4 @@ public class ProdutoTextoDAO extends DAO {
     public void deletar(int id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 }

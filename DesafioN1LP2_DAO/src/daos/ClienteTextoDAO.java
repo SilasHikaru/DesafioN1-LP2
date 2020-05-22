@@ -41,14 +41,14 @@ public class ClienteTextoDAO extends DAO {
     }
     
     @Override
-    public void atualizar(Entidade entidade) {
-    }
+    public void atualizar(Entidade entidade) {}
 
     @Override
     public void cadastrar(Entidade entidade) {
         boolean contem = false;
         ClienteVO cliente = (ClienteVO) entidade;
         int id = cliente.getClienteId();
+
         try{
             try(BufferedReader buffRead = new BufferedReader(new FileReader(PATH_FILE))){
                 String linha;

@@ -21,16 +21,16 @@ public class EstadoCadastrar extends MaquinaEstado {
                 cadastrarCliente();
                 break;
                 
-            case "PRODUTO":
-                cadastrarProduto();
+            case "FUNCIONARIO":
+                cadastrarFuncionario();
                 break;
                 
             case "PEDIDO":
                 cadastrarPedido();
                 break;
-            
-            case "FUNCIONARIO":
-                cadastrarFuncionario();
+                
+            case "PRODUTO":
+                cadastrarProduto();
                 break;
                 
             default:
@@ -42,7 +42,6 @@ public class EstadoCadastrar extends MaquinaEstado {
     }
     
     private void cadastrarCliente() {
-        
         ClienteVO cliente = new ClienteVO();
         RepositorioArquivos repositorio = new RepositorioArquivos();
         
@@ -58,25 +57,30 @@ public class EstadoCadastrar extends MaquinaEstado {
         DesafioN1LP2.estadoConsole = EnumEstado.ESTADO_CRUID.getEstadoMaquina();
     }
     
-    private void cadastrarProduto() {
+    private void cadastrarFuncionario() {
+        FuncionarioVO funcionario = new FuncionarioVO();
+        AcessoVO acesso = new AcessoVO();
         
-        ProdutoVO produto = new ProdutoVO();
         RepositorioArquivos repositorio = new RepositorioArquivos();
         
         Scanner le = new Scanner(System.in);
         
-        System.out.print("Informe o ID do produto que deseja cadastrar: ");
-        produto.setProdutoId(Integer.parseInt(le.nextLine()));
+        System.out.print("Informe o usuário do funcionário: ");
+        acesso.setUsuario(le.nextLine());
         
-        System.out.print("Informe a descrição do produto: ");
-        produto.setDescricao(le.nextLine());
-        
-        repositorio.cadastrar(produto, EntidadesDisponiveis.PRODUTO);
+        System.out.print("Informe a senha do funcionário: ");
+        acesso.setSenha(le.nextLine());
+             
+        System.out.print("Informe o cargo do funcionário ( GERENTE / VENDEDOR ): ");
+        funcionario.setTipoFuncionario(le.nextLine());
+       
+        funcionario.setAcesso(acesso);
+       
+        repositorio.cadastrar(funcionario, EntidadesDisponiveis.FUNCIONARIO);
         DesafioN1LP2.estadoConsole = EnumEstado.ESTADO_CRUID.getEstadoMaquina();
     }
     
     private void cadastrarPedido() {
-        
         PedidoVO pedido = new PedidoVO();
         RepositorioArquivos repositorio = new RepositorioArquivos();
         
@@ -92,28 +96,19 @@ public class EstadoCadastrar extends MaquinaEstado {
         DesafioN1LP2.estadoConsole = EnumEstado.ESTADO_CRUID.getEstadoMaquina();
     }
     
-    private void cadastrarFuncionario() {
-        
-        FuncionarioVO funcionario = new FuncionarioVO();
-        AcessoVO acesso = new AcessoVO();
-        
+    private void cadastrarProduto() {
+        ProdutoVO produto = new ProdutoVO();
         RepositorioArquivos repositorio = new RepositorioArquivos();
         
         Scanner le = new Scanner(System.in);
         
-       System.out.print("Informe o usuário do funcionário: ");
-       acesso.setUsuario(le.nextLine());
+        System.out.print("Informe o ID do produto que deseja cadastrar: ");
+        produto.setProdutoId(Integer.parseInt(le.nextLine()));
         
-       System.out.print("Informe a senha do funcionário: ");
-       acesso.setSenha(le.nextLine());
-             
-       System.out.print("Informe o cargo do funcionário ( GERENTE / VENDEDOR ): ");
-       funcionario.setTipoFuncionario(le.nextLine());
-       
-       funcionario.setAcesso(acesso);
-       
-       repositorio.cadastrar(funcionario, EntidadesDisponiveis.FUNCIONARIO);
+        System.out.print("Informe a descrição do produto: ");
+        produto.setDescricao(le.nextLine());
+        
+        repositorio.cadastrar(produto, EntidadesDisponiveis.PRODUTO);
         DesafioN1LP2.estadoConsole = EnumEstado.ESTADO_CRUID.getEstadoMaquina();
-       
     }
 }

@@ -1,15 +1,15 @@
 package estadosConsole;
 
 public enum EnumEstado {
-    BEM_VINDO(new EstadoBemVindo()),
-    LOGIN (new EstadoLogin()),
-    MENU_FUNCIONARIO (new EstadoMenuFuncionario()),
-    ESTADO_CRUID (new EstadoCRUID()),
-    CADASTRAR(new EstadoCadastrar()),
     ATUALIZAR(new EstadoAtualizar()),
-    EXCLUIR(new EstadoExcluir()),
+    BEM_VINDO(new EstadoBemVindo()),
+    CADASTRAR(new EstadoCadastrar()),
     CONSULTAR(new EstadoConsultar()),
-    LISTAR(new EstadoListar());
+    ESTADO_CRUID (new EstadoCRUID()),
+    EXCLUIR(new EstadoExcluir()),
+    LISTAR(new EstadoListar()),
+    LOGIN (new EstadoLogin()),
+    MENU_FUNCIONARIO (new EstadoMenuFuncionario()),;
     
     private final MaquinaEstado estadoMaquina;
     

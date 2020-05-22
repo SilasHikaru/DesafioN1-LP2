@@ -1,13 +1,12 @@
 package vos;
+
 import basis.Entidade;
 
 public class FuncionarioVO extends Entidade{
-    
     private String nome;
     private String tipoFuncionario;
     private AcessoVO acesso;
   
-    
     public AcessoVO getAcesso(){
         return acesso;
     }
@@ -15,6 +14,7 @@ public class FuncionarioVO extends Entidade{
     public void setAcesso(AcessoVO acesso){
         this.acesso = acesso;
     }
+    
     /**
      * @return the nome
      */
@@ -30,14 +30,14 @@ public class FuncionarioVO extends Entidade{
     }
 
     /**
-     * @return the TipoFuncionarioId
+     * @return the ipoFuncionario
      */
     public String getTipoFuncionario() {
         return tipoFuncionario;
     }
 
     /**
-     * @param TipoFuncionario the TipoFuncionarioId to set
+     * @param tipoFuncionario the tipoFuncionario to set
      */
     public void setTipoFuncionario(String tipoFuncionario) {
         this.tipoFuncionario = tipoFuncionario;

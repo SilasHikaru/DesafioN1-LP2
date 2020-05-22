@@ -20,6 +20,10 @@ public class EstadoCRUID  extends MaquinaEstado {
         Scanner leitor = new Scanner(System.in);
         
         switch(leitor.nextLine()) {
+            case "0":
+                DesafioN1LP2.estadoConsole = EnumEstado.BEM_VINDO.getEstadoMaquina();
+                break;
+
             case "1":
                 DesafioN1LP2.estadoConsole = EnumEstado.CADASTRAR.getEstadoMaquina();
                 break;
@@ -42,10 +46,6 @@ public class EstadoCRUID  extends MaquinaEstado {
 
             case "6":
                 DesafioN1LP2.estadoConsole = EnumEstado.MENU_FUNCIONARIO.getEstadoMaquina();
-                break;
-
-            case "0":
-                DesafioN1LP2.estadoConsole = EnumEstado.BEM_VINDO.getEstadoMaquina();
                 break;
 
             default:

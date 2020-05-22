@@ -10,16 +10,16 @@ public class EstadoAtualizar extends MaquinaEstado {
                 atualizarCliente();
                 break;
                 
-            case "PRODUTO":
-                atualizarProduto();
+            case "FUNCIONARIO":
+                atualizarFuncionario();
                 break;
                 
             case "PEDIDO":
                 atualizarPedido();
                 break;
-            
-            case "FUNCIONARIO":
-                atualizarFuncionario();
+                
+            case "PRODUTO":
+                atualizarProduto();
                 break;
                 
             default:
@@ -30,18 +30,11 @@ public class EstadoAtualizar extends MaquinaEstado {
         return false;
     }
     
-    private void atualizarCliente() {
-        
-    }
+    private void atualizarCliente() {}
     
-    private void atualizarProduto() {
-        
-    }
+    private void atualizarFuncionario() {}
     
-    private void atualizarPedido() {
-    }
+    private void atualizarPedido() {}
     
-    private void atualizarFuncionario() {
-        
-    }
+    private void atualizarProduto() {}
 }

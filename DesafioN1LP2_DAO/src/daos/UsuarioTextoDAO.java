@@ -10,7 +10,6 @@ import vos.FuncionarioVO;
 import java.io.PrintWriter;
 import java.io.FileWriter;
 
-
 public class UsuarioTextoDAO extends DAO {
     private final String PATH_FILE = "..\\DesafioN1LP2_DAO\\src\\txts\\funcionarios.txt";
 
@@ -38,8 +37,10 @@ public class UsuarioTextoDAO extends DAO {
             BufferedReader buffRead = new BufferedReader (new FileReader(PATH_FILE));
             String linha;
             String splited[];
+            
             while((linha = buffRead.readLine()) != null) {
                 splited = linha.split("\\|");
+                
                 if(splited[0].equals(codigo)){
                     AcessoVO acesso = new AcessoVO();
                     FuncionarioVO funcionario = new FuncionarioVO();
@@ -70,12 +71,10 @@ public class UsuarioTextoDAO extends DAO {
     }
     
     @Override 
-    public void atualizar(Entidade entidade) {
-    }
+    public void atualizar(Entidade entidade) {}
     
     @Override 
-    public void cadastrar(Entidade entidade) {
-    }
+    public void cadastrar(Entidade entidade) {}
 
     @Override
     public void deletar(int id) throws SQLException {

@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package daos;
+
 import vos.PedidoVO;
 import vos.ClienteVO;
 import basis.Entidade;
@@ -14,13 +10,11 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
-/**
- *
- * @author Acer2
- */
+
 public class PedidoTextoDAO extends DAO{
     private final String PATH_FILE = "..\\DesafioN1LP2_DAO\\src\\txts\\pedidos.txt";
     private final String PATH_FILE1 = "..\\DesafioN1LP2_DAO\\src\\txts\\clientes.txt";
+    
     public PedidoTextoDAO() { 
         super(PedidoVO.class);
     }
@@ -54,12 +48,12 @@ public class PedidoTextoDAO extends DAO{
 
     @Override
     public void cadastrar(Entidade entidade) {
-        
         boolean contemCliente = false;
         boolean repetido = false;
         PedidoVO pedido = (PedidoVO) entidade;
         int id = pedido.getPedidoId();
         int idCliente = pedido.getClienteId();
+        
         try{
             try(BufferedReader buffRead = new BufferedReader(new FileReader(PATH_FILE))){
                 String linha;
@@ -85,17 +79,15 @@ public class PedidoTextoDAO extends DAO{
                     }
                     
                     if(contemCliente && !repetido){
-                    try(PrintWriter pw = new PrintWriter(new FileWriter(PATH_FILE,true))){
-                        
-                        pw.println(pedido.getPedidoId() + "|" + pedido.getClienteId());
-                        pw.close();
-                    }
+                        try(PrintWriter pw = new PrintWriter(new FileWriter(PATH_FILE,true))){
+                            pw.println(pedido.getPedidoId() + "|" + pedido.getClienteId());
+                            pw.close();
+                        }
                     }
                     else{
                         System.out.println("Não foi possível cadastrar");
                     }
                 }
-                
             }
         } catch(Exception e){
             e.printStackTrace();

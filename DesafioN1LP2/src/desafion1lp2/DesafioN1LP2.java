@@ -12,9 +12,8 @@ public class DesafioN1LP2 {
     public static void main(String[] args) {
         estadoConsole = EnumEstado.BEM_VINDO.getEstadoMaquina();
         boolean sair = false;
-        
-        while (!sair){
 
+        while (!sair){
             sair = estadoConsole.executar();
         }
     }

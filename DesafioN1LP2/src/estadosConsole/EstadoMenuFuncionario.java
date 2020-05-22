@@ -11,14 +11,20 @@ public class EstadoMenuFuncionario extends MaquinaEstado {
         System.out.println("1 - Cliente");
         System.out.println("2 - Produto");
         System.out.println("3 - Pedido");
+        
         if(Config.getInstance().getFuncionario().getTipoFuncionario().equalsIgnoreCase("GERENTE")) {
             System.out.println("4 - Funcionário");
         }
+        
         System.out.println("0 - Desconectar");
         
         Scanner leitor = new Scanner(System.in);
         
         switch(leitor.nextLine()) {
+            case "0":
+                DesafioN1LP2.estadoConsole = EnumEstado.BEM_VINDO.getEstadoMaquina();
+                break;
+                
             case "1":
                 EstadoCRUID.tipoItem = "CLIENTE";
                 DesafioN1LP2.estadoConsole = EnumEstado.ESTADO_CRUID.getEstadoMaquina();
@@ -41,10 +47,6 @@ public class EstadoMenuFuncionario extends MaquinaEstado {
                 } else {
                     System.out.println("Opção invalida ");
                 }
-                break;
-
-            case "0":
-                DesafioN1LP2.estadoConsole = EnumEstado.BEM_VINDO.getEstadoMaquina();
                 break;
 
             default:

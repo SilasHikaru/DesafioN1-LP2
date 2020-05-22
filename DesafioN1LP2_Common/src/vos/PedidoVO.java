@@ -1,4 +1,5 @@
 package vos;
+
 import basis.Entidade;
 
 public class PedidoVO extends Entidade{

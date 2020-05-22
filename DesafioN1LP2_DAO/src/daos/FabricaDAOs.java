@@ -15,21 +15,26 @@ public class FabricaDAOs {
 
         switch (enumEntidade)
         {
-            case USUARIO:
-                retorno = new UsuarioTextoDAO();
-                break;
             case CLIENTE:
                 retorno = new ClienteTextoDAO();
                 break;
-            case PRODUTO:
-                retorno = new ProdutoTextoDAO();
-                break;
-            case PEDIDO:
-                retorno = new PedidoTextoDAO();
-                break;
+                
             case FUNCIONARIO:
                 retorno = new FuncionarioTextoDAO();
                 break;
+
+            case PEDIDO:
+                retorno = new PedidoTextoDAO();
+                break;
+            
+            case PRODUTO:
+                retorno = new ProdutoTextoDAO();
+                break;
+            
+            case USUARIO:
+                retorno = new UsuarioTextoDAO();
+                break;
+            
             default:
                 retorno = null;
                 break;

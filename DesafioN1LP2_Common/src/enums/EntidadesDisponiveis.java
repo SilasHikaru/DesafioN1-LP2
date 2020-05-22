@@ -1,16 +1,12 @@
 package enums;
 
 public enum EntidadesDisponiveis {
-    USUARIO("usuario"),
-
-    PEDIDO("pedido"),
-
-    PRODUTO("produto"),
-    
     CLIENTE("clinete"),
+    FUNCIONARIO("funcionario"),
+    PEDIDO("pedido"),
+    PRODUTO("produto"),
+    USUARIO("usuario");
     
-    FUNCIONARIO("funcionario");
- 
     final private String descricao;
  
     EntidadesDisponiveis(String descricao) {
