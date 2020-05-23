@@ -37,7 +37,29 @@ public class ClienteTextoDAO extends DAO {
 
     @Override
     public Entidade localizar(String codigo) throws SQLException {
-        return null;
+        Entidade entidade = null;
+
+        try {
+            try(BufferedReader buffRead = new BufferedReader(new FileReader(PATH_FILE))){
+                String linha;
+                String splited[];
+
+                while((linha = buffRead.readLine()) != null){
+                    splited = linha.split("\\|");
+
+                    if(splited[1].equals(codigo)){
+                        entidade = new ClienteVO();
+                        ((ClienteVO)entidade).setClienteId(Integer.parseInt(splited[0]));
+                        ((ClienteVO)entidade).setNome(splited[1]);
+                        break;
+                    }
+                }
+            }
+        } catch(Exception erro) {
+            erro.printStackTrace();
+        }
+        
+        return entidade;
     }
     
     @Override
@@ -45,31 +67,12 @@ public class ClienteTextoDAO extends DAO {
 
     @Override
     public void cadastrar(Entidade entidade) {
-        boolean contem = false;
         ClienteVO cliente = (ClienteVO) entidade;
-        int id = cliente.getClienteId();
 
         try{
-            try(BufferedReader buffRead = new BufferedReader(new FileReader(PATH_FILE))){
-                String linha;
-                String splited[];
-                
-                while((linha = buffRead.readLine()) != null){
-                    splited = linha.split("\\|");
-                    if(Integer.parseInt(splited[0])== id){
-                        contem = true;
-                    }
-
-                }
-                if(!contem){
-                    try(PrintWriter pw = new PrintWriter(new FileWriter(PATH_FILE,true))){
-                        pw.println(cliente.getClienteId() + "|" + cliente.getNome());
-                        pw.close();
-                    }
-                }
-                else{
-                    System.out.println("Cliente já cadastrado");
-                }
+            try(PrintWriter pw = new PrintWriter(new FileWriter(PATH_FILE, true))){
+                pw.println(cliente.getClienteId() + "|" + cliente.getNome());
+                pw.close();
             }
         } catch(Exception e){
             e.printStackTrace();

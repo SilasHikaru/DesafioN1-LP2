@@ -2,6 +2,8 @@ package estadosConsole;
 
 import java.util.Scanner;
 import basis.Entidade;
+import business.CadastroCliente;
+import business.config.Config;
 import daos.RepositorioArquivos;
 import daos.Repositorio;
 import vos.ClienteVO;
@@ -53,8 +55,15 @@ public class EstadoCadastrar extends MaquinaEstado {
         System.out.print("Informe o nome do cliente: ");
         cliente.setNome(le.nextLine());
         
-        repositorio.cadastrar(cliente, EntidadesDisponiveis.CLIENTE);
-        DesafioN1LP2.estadoConsole = EnumEstado.ESTADO_CRUID.getEstadoMaquina();
+        CadastroCliente cadCliente = new CadastroCliente();
+        
+        if(cadCliente.validarCliente(cliente)) {
+            Config.getInstance().IncluiAuditoria("Cliente " + cliente.getNome() + " cadastrado");
+            
+            DesafioN1LP2.estadoConsole = EnumEstado.ESTADO_CRUID.getEstadoMaquina();
+        } else {
+            System.out.println("Nome do cliente já existe");
+        }
     }
     
     private void cadastrarFuncionario() {
