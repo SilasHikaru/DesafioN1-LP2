@@ -6,13 +6,15 @@ import java.util.concurrent.*;
 public class Config {
     private FuncionarioVO funcionario = new FuncionarioVO();
     private static Config config;
-    private boolean desativa = true;
+    private boolean desativa = false;
 
-    private Config() {}
+    private Config() {
+        
+    }
    
     ConcurrentLinkedQueue<String> lista = new ConcurrentLinkedQueue<String>();
     
-    ThreadMensagensAuditoria thread = new ThreadMensagensAuditoria();
+    ThreadMensagensAuditoria thread;
     
     public static synchronized Config getInstance() {
         if (config == null)
@@ -45,10 +47,25 @@ public class Config {
     }
     
     public void ativo(){
-        thread.start();
+        if(thread == null){
+            thread = new ThreadMensagensAuditoria();
+            thread.start();
+        }
+        
     }
     
     public Boolean Desativa(){
         return desativa;
+    }
+    
+    public void ControleDesativa(){
+        desativa = true;
+         try {
+                thread.join(2000);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            if (thread.isAlive())
+                thread.interrupt();
     }
 }

@@ -2,6 +2,7 @@ package estadosConsole;
 
 import desafion1lp2.DesafioN1LP2;
 import java.util.Scanner;
+import business.config.Config;
 
 public class EstadoBemVindo extends MaquinaEstado {
     @Override
@@ -17,6 +18,8 @@ public class EstadoBemVindo extends MaquinaEstado {
         switch(leitor.nextLine()) {
             case "0":
                 sair = true;
+                Config.getInstance();
+                Config.getInstance().ControleDesativa();
                 break;
 
             case "1":

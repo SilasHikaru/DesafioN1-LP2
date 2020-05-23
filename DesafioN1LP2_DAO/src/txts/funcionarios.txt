@@ -3,3 +3,5 @@ admin|123|VENDEDOR
 marques|123|GERENTE
 nathan|123|GERENTE
 silas|123|GERENTE
+maicon|123|GERENTE
+luiz|123|VENDEDOR

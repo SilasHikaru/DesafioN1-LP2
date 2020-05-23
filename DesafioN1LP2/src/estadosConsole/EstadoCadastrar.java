@@ -3,6 +3,8 @@ package estadosConsole;
 import java.util.Scanner;
 import basis.Entidade;
 import business.CadastroCliente;
+import business.CadastroFuncionario;
+import business.CadastroPedido;
 import business.config.Config;
 import daos.RepositorioArquivos;
 import daos.Repositorio;
@@ -18,6 +20,7 @@ import desafion1lp2.DesafioN1LP2;
 public class EstadoCadastrar extends MaquinaEstado {
     @Override
     public boolean executar() {
+        Config.getInstance().ativo();
         switch(EstadoCRUID.tipoItem) {
             case "CLIENTE":
                 cadastrarCliente();
@@ -58,6 +61,7 @@ public class EstadoCadastrar extends MaquinaEstado {
         CadastroCliente cadCliente = new CadastroCliente();
         
         if(cadCliente.validarCliente(cliente)) {
+            
             Config.getInstance().IncluiAuditoria("Cliente " + cliente.getNome() + " cadastrado");
             
             DesafioN1LP2.estadoConsole = EnumEstado.ESTADO_CRUID.getEstadoMaquina();
@@ -84,8 +88,16 @@ public class EstadoCadastrar extends MaquinaEstado {
         funcionario.setTipoFuncionario(le.nextLine());
        
         funcionario.setAcesso(acesso);
+        
+        CadastroFuncionario funcionarioCad = new CadastroFuncionario();
        
-        repositorio.cadastrar(funcionario, EntidadesDisponiveis.FUNCIONARIO);
+         if(funcionarioCad.validarFuncionario(funcionario)) {
+            Config.getInstance().IncluiAuditoria("Funcionário " + funcionario.getAcesso().getUsuario() + " cadastrado");
+            
+            DesafioN1LP2.estadoConsole = EnumEstado.ESTADO_CRUID.getEstadoMaquina();
+        } else {
+            System.out.println("Funcionário já existe");
+        }
         DesafioN1LP2.estadoConsole = EnumEstado.ESTADO_CRUID.getEstadoMaquina();
     }
     
@@ -101,7 +113,15 @@ public class EstadoCadastrar extends MaquinaEstado {
         System.out.print("Informe o ID do cliente cadastrado: ");
         pedido.setClienteId(Integer.parseInt(le.nextLine()));
         
-        repositorio.cadastrar(pedido, EntidadesDisponiveis.PEDIDO);
+        CadastroPedido CadPedido = new CadastroPedido();
+        
+         if(CadPedido.validarPedido(pedido)) {
+            Config.getInstance().IncluiAuditoria("Pedido " + pedido.getPedidoId() + " cadastrado");
+            
+            DesafioN1LP2.estadoConsole = EnumEstado.ESTADO_CRUID.getEstadoMaquina();
+        } else {
+            System.out.println("Pedido já existe");
+        }
         DesafioN1LP2.estadoConsole = EnumEstado.ESTADO_CRUID.getEstadoMaquina();
     }
     

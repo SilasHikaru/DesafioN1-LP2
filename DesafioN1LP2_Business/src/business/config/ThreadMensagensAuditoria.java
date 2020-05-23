@@ -8,8 +8,8 @@ public class ThreadMensagensAuditoria extends Thread{
         while(!Config.getInstance().Desativa()){
             mensagem = Config.getInstance().RetiraAuditoria();
             try{
-                if(!mensagem.equals("")){
-                    Thread.sleep(10000);
+                if(mensagem != null){
+                    Thread.sleep(1000);
                     System.out.println(mensagem);
                 }
 

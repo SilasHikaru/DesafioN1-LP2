@@ -39,34 +39,28 @@ public class PedidoTextoDAO extends DAO{
 
     @Override
     public Entidade localizar(String codigo) throws SQLException {
-        return null;
-    }
-    
-    @Override
-    public void atualizar(Entidade entidade) {
-    }
-
-    @Override
-    public void cadastrar(Entidade entidade) {
-        boolean contemCliente = false;
-        boolean repetido = false;
-        PedidoVO pedido = (PedidoVO) entidade;
-        int id = pedido.getPedidoId();
-        int idCliente = pedido.getClienteId();
-        
-        try{
+         Entidade entidade = null;
+         int codigo1 = Integer.parseInt(codigo);
+         boolean contemCliente = false;
+         boolean repetido = false;
+         PedidoVO pedido = (PedidoVO) entidade;
+         int id = pedido.getPedidoId();
+         int idCliente = pedido.getClienteId();
+  
+         String splited[];
+        try {
             try(BufferedReader buffRead = new BufferedReader(new FileReader(PATH_FILE))){
                 String linha;
-                String splited[];
                 
+
                 while((linha = buffRead.readLine()) != null){
                     splited = linha.split("\\|");
                     if(Integer.parseInt(splited[0])== id){
                         repetido = true;
                     }
-
+                   
                 }
-                try(BufferedReader buffReadCliente = new BufferedReader(new FileReader(PATH_FILE1))){
+                 try(BufferedReader buffReadCliente = new BufferedReader(new FileReader(PATH_FILE1))){
                     String linha1;
                     String splited1[];
                     
@@ -79,16 +73,41 @@ public class PedidoTextoDAO extends DAO{
                     }
                     
                     if(contemCliente && !repetido){
-                        try(PrintWriter pw = new PrintWriter(new FileWriter(PATH_FILE,true))){
-                            pw.println(pedido.getPedidoId() + "|" + pedido.getClienteId());
-                            pw.close();
-                        }
+                        entidade = new PedidoVO();
+                        ((PedidoVO)entidade).setClienteId(idCliente);
+                        ((PedidoVO)entidade).setPedidoId(id);
+                       
                     }
                     else{
                         System.out.println("Não foi possível cadastrar");
                     }
                 }
+                
             }
+        } catch(Exception erro) {
+            erro.printStackTrace();
+        }
+        
+        return entidade;
+    }
+    
+    @Override
+    public void atualizar(Entidade entidade) {
+    }
+
+    @Override
+    public void cadastrar(Entidade entidade) {
+       
+        PedidoVO pedido = (PedidoVO) entidade;
+        int id = pedido.getPedidoId();
+        int idCliente = pedido.getClienteId();
+        
+        try{
+             try(PrintWriter pw = new PrintWriter(new FileWriter(PATH_FILE,true))){
+                    pw.println(pedido.getPedidoId() + "|" + pedido.getClienteId());
+                    pw.close();
+                }
+            
         } catch(Exception e){
             e.printStackTrace();
         }
